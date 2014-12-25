@@ -1,0 +1,21 @@
+#!/bin/bash
+
+. /etc/environment
+
+mv /opt/repo/logrotate /etc/logrotate.d/raptor;
+
+gem install passenger -v 5.0.0.beta1
+gem uninstall passenger -v 4.0.50;
+passenger-config install-agent;
+passenger-config install-standalone-runtime;
+passenger-config build-native-support
+
+echo $'source /etc/profile 2>/dev/null\nsource /etc/environment\nsource /usr/lib/rvm/environments/default' >> /opt/repo/.bashrc;
+chown jelastic:jelastic /opt/repo/.bash_profile;
+
+touch /opt/repo/.rvmrc;
+echo "export rvm_ignore_gemsets_flag=1" >> /opt/repo/.rvmrc;
+touch /root/.rvmrc;
+echo "export rvm_ignore_gemsets_flag=1" >> /root/.rvmrc;
+chown jelastic:jelastic /opt/repo/.rvmrc
+rvm rvmrc warning ignore /opt/repo/.rvmrc
