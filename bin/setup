@@ -1,14 +1,16 @@
 #!/bin/bash
 
-. /etc/environment
+source /etc/environment  
 
-mv /opt/repo/logrotate /etc/logrotate.d/raptor;
+[ -f /opt/repo/logrotate ] && { mv /opt/repo/logrotate /etc/logrotate.d/raptor; } 
 
-gem install passenger -v 5.0.0.beta1
+gem install passenger -v 5.0.0.beta2
 gem uninstall passenger -v 4.0.50;
 passenger-config install-agent;
 passenger-config install-standalone-runtime;
 passenger-config build-native-support
+
+[ -f $GEM_HOME/gems/passenger-5.0.0.beta2/lib/phusion_passenger/standalone/start_command/builtin_engine.rb ] && { sed -ib_q 's/ecape/escape/' $GEM_HOME/gems/passenger-5.0.0.beta2/lib/phusion_passenger/standalone/start_command/builtin_engine.rb; }
 
 echo $'source /etc/profile 2>/dev/null\nsource /etc/environment\nsource /usr/lib/rvm/environments/default' >> /opt/repo/.bashrc;
 chown jelastic:jelastic /opt/repo/.bash_profile;
