@@ -26,6 +26,14 @@ stop(){
   sleep 2;
 }
 
+status() {
+        if [ -f /opt/repo/pid/passenger.pid ]; then
+                echo "Ruby Raptor server is running";
+        else
+                echo "Ruby Raptor server is not running"
+        fi
+}
+
 build(){
   return 0;
 }
@@ -41,7 +49,7 @@ case "$1" in
   stop)
     stop
     ;;
-  restart)
+  restart|reload)
     stop
     start
     ;;
@@ -51,7 +59,10 @@ case "$1" in
   deploy)
     deploy
     ;;
+  status)
+    status
+    ;;
   *)
-      echo $"Usage: cartridge {start|stop|restart}"
+      echo $"Usage: cartridge {start|stop|restart|reload|status}"
     exit 1
 esac
