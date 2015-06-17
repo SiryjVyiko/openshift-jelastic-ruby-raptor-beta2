@@ -21,3 +21,5 @@ touch /root/.rvmrc;
 echo "export rvm_ignore_gemsets_flag=1" >> /root/.rvmrc;
 chown jelastic:jelastic /opt/repo/.rvmrc
 rvm rvmrc warning ignore /opt/repo/.rvmrc
+
+service iptables restart > /dev/null;
