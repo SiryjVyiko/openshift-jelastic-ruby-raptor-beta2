@@ -40,7 +40,7 @@ function _finishDeploy(){
     _bundleInstall;
     _updateOwnership $APPWEBROOT;
     _clearCache;
-    service cartridge restart 2>/dev/null 1>/dev/null;
+    #service cartridge restart 2>/dev/null 1>/dev/null;
 }
 
 function _undeploy(){
