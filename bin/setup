@@ -4,7 +4,7 @@ source /etc/environment
 
 [ -f /opt/repo/logrotate ] && { mv /opt/repo/logrotate /etc/logrotate.d/raptor; } 
 
-gem install passenger 5.0.7 > /dev/null 2>&1
+gem install passenger -v 5.0.7 > /dev/null 2>&1
 gem uninstall passenger -v `gem list|grep passenger|grep -o "4[.0-9]*"` /dev/null 2>&1
 passenger-config install-agent /dev/null 2>&1; 
 passenger-config install-standalone-runtime /dev/null 2>&1;
