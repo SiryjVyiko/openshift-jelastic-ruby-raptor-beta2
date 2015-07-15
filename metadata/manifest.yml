@@ -11,7 +11,7 @@ Cartridge-Vendor: Jelastic
 Categories:
   - service
   - embedded
-Source-Url: https://github.com/jelastic-public-cartridges/openshift-jelastic-ruby-raptor-beta2.git
+Source-Url: https://github.com/SiryjVyiko/openshift-jelastic-ruby-raptor-beta2.git
 Website: http://jelastic.com/
 Help-Topics:
   "Developer Center": https://jelastic.com
