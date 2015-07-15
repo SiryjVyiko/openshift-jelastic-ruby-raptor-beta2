@@ -6,7 +6,7 @@ version=`passenger-config --version`
 
 if [[ $version =~ 4.* ]] ;then
 
-    gem install passenger 5.0.7 >>/opt/repo/log/out.log 2>&1 ;
+    gem install passenger -v 5.0.7 >>/opt/repo/log/out.log 2>&1 ;
 
     gem uninstall passenger -v `gem list|grep passenger|grep -o "4[.0-9]*"` >>/opt/repo/log/out.log 2>&1 ;
 
