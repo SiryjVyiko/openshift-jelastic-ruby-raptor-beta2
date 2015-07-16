@@ -23,3 +23,5 @@ chown jelastic:jelastic /opt/repo/.rvmrc
 rvm rvmrc warning ignore /opt/repo/.rvmrc
 
 service iptables restart > /dev/null;
+
+[ -f /var/www/webroot/ROOT/Gemfile ] && sed -i "/gem 'rails'.*/ s/gem 'rails'.*/gem 'rails'/" /var/www/webroot/ROOT/Gemfile; 
